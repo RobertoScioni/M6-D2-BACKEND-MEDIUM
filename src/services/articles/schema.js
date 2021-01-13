@@ -35,4 +35,4 @@ const ArticleSchema = new Schema(
 
 ArticleSchema.plugin(mongoosePaginate)
 
-module.exports = mongoose.model("User", ArticleSchema)
+module.exports = mongoose.model("Article", ArticleSchema)

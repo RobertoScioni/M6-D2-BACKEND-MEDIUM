@@ -34,8 +34,15 @@ server.use(catchAllHandler)
 /**
  * start
  */
-server.listen(port, () => {
-	//console.clear()
-	console.log("server running on port: ", port)
-	console.log(listEndpoints(server))
-})
+mongoose
+	.connect(process.env.MONGO_CONNECTION, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+	})
+	.then(
+		server.listen(port, () => {
+			console.log("Running on port", port)
+		})
+	)
+	.catch((err) => console.log(err))
